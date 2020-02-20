@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+/* ---- Header ---- */
+
+header {
+	background-color: #ddd;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	border-bottom: 2px #888 solid;
+	margin-bottom: 0.8em;
+}
+
+/* ---- Board ---- */
+
+#board {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.5em;
+	background-color: #d8b685;
+}
+
+#board > div {
+	display:flex;
+}
+
+.boardCell {
+	--size: 1.4em;
+	width: var(--size);
+	height: var(--size);
+	margin: 0.05em;
+	border: 1px #888 solid;
+	text-align: center;
+	font-size: 30px;
+	font-weight: 700;
+	font-family: sans-serif;
+	padding: 0.1em;
+}
+
+#board .greenCellColor {
+	background-color: #00bb00;
+}
+
+#board .redCellColor {
+	background-color: #bb0000;
+}
+
+#board .lightBlueCellColor {
+	background-color: #309ff7;
+}
+
+#board .blueCellColor {
+	background-color: #000088;
+}
+
+#board .pinkCellColor {
+	background-color: #f27ef7;
+}
+
+#board .centerCellColor {
+	background-color: #dd7733;
+}
+
+.letter {
+    background-color: orange;
+	border: 1px black solid;
+	max-height: 100%;
+}
+
+/* ---- Hand ---- */
+
+#hand {
+	background-color: lightblue;
+	margin-top: 0.8em;
+	border-top: 2px #888 solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 0%;
+}
+
+#hand-content {
+	height: 100%;
+	background-color: #598dd4;
+	display: flex;
+}
+
+#hand-content .boardCell {
+	border: 1px black solid;
+}
+
+.hoverable-letter {
+	cursor: pointer;
+}
