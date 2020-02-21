@@ -38,9 +38,13 @@
 					<div class="boardCell">
 					</div>
 				</div>
+				<input type="button" value="Valider" id="endturnbtn">
 			</section>
 		</main>
-		<script src="script/cellManager.js"></script>
+		<script src="script/utils.js"></script>
+		<script src="script/wordHandler.js"></script>
+		<script src="script/handHandler.js"></script>
+		<script src="script/cellHandler.js"></script>
 		<script src="script/scrabble_main.js"></script>
 	</body>
 </html>

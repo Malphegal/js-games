@@ -1,10 +1,8 @@
+let allWords;
+
 $("document").ready(() => {
 	createEmptyBoard();
-	$("#hand-content .boardCell").each(function() {
-		$(this).html(getLetterDiv("L"));
-		$(this).addClass("hoverable-letter");
-		$(this).attr("onmousedown", "omd(event)")
-	});
+	loadWords();
 });
 
 function createEmptyBoard(){
@@ -20,4 +18,14 @@ function createEmptyBoard(){
 		}
 		board.append(newRow + "</div>");
 	}
+	$("#board .boardCell").mouseenter(function(){
+		hoveredCell = $(this);
+	})
+};
+
+async function loadWords(){
+	var file = "txt/liste_mots_francais.txt";
+	let response = await fetch(file).then(response => aaa = response.text())
+	allWords = removeAccents(response);
+	allWords = allWords.split("\n");
 }

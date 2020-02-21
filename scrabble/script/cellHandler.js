@@ -14,6 +14,8 @@ let boardColors = ["R", "G", "G", "L", "G", "G", "G", "R", "G", "G", "G", "L", "
 	"G", "P", "G", "G", "G", "B", "G", "G", "G", "B", "G", "G", "G", "P", "G",
 	"R", "G", "G", "L", "G", "G", "G", "R", "G", "G", "G", "L", "G", "G", "R"];
 
+let hoveredCell = undefined;
+
 function computeCellColorClass(i, j){
 	switch (boardColors[i * 15 + j])
 	{
@@ -32,6 +34,6 @@ function computeCellColorClass(i, j){
 	}
 }
 
-function getLetterDiv(letter){
-	return "<div class=\"letter\">" + letter + "</div>";
+function getLetterDiv(){
+	return "<div class=\"letter\" draggable=\"true\">" + getRandomLetter() + "</div>";
 }
