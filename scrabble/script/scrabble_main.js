@@ -1,31 +1,32 @@
-let allWords;
-
 $("document").ready(() => {
-	createEmptyBoard();
-	loadWords();
+	initBoard();
+	initWords();
+	initHand();
+	
+	startGame();
 });
 
-function createEmptyBoard(){
-	let board = $("#board");
-	board.html("");
-	for (let i = 0; i < 15; i++)
-	{
-		let newRow = "<div>";
-		for (let j = 0; j < 15; j++)
-		{
-			let colorClass = computeCellColorClass(i, j);
-			newRow += "<div class=\"boardCell " + colorClass + "\"></div>";
-		}
-		board.append(newRow + "</div>");
-	}
-	$("#board .boardCell").mouseenter(function(){
-		hoveredCell = $(this);
-	})
-};
+const c_maxPlayer = 2;
+let currentPlayingPlayer = 1;
+function startGame(){
+	$("#hand-content2").parent().hide();
+}
 
-async function loadWords(){
-	var file = "txt/liste_mots_francais.txt";
-	let response = await fetch(file).then(response => aaa = response.text())
-	allWords = removeAccents(response);
-	allWords = allWords.split("\n");
+function nextPlayer(skipped){
+	// Augmenter les points du joueur courant
+	if (!skipped)
+		updateScore(currentPlayingPlayer);
+	
+	// Changer de joueur, et afficher la main du nouveau joueur
+	currentPlayingPlayer = currentPlayingPlayer == 1 ? 2 : 1;
+	$("#hand-content" + currentPlayingPlayer).parent().show();
+	$("#hand-content" + (currentPlayingPlayer == 1 ? 2 : 1)).parent().hide();
+	
+	// Réinitialiser le mot courant
+	lettersInOrder = "";
+}
+
+function updateScore(id){
+	let currentPlayer = $("#player" + currentPlayingPlayer + "score");
+	currentPlayer.html(parseInt(currentPlayer.html()) + getWordPoints(currentWord));
 }

@@ -7,18 +7,19 @@ let clickedLetter = undefined;
  */
 let elemBelow;
 
-$("document").ready(() => {
-    // Ajouter les events 'Drag' au letter de la main
-    $("#hand-content .boardCell").each(function() {
+function initHand(){
+    // Ajouter les events 'Drag' au lettre de la main
+    $(".hand-content .boardCell").each(function() {
         $(this).html(getLetterDiv());
         $(this).addClass("hoverable-letter");
         $(this).attr("ondragstart", "ods(event)");
         $(this).attr("ondragend", "ode(event)");
         $(this).attr("ondrag", "od(event)");
     });
-    // Ajouter l'event click sur le bouton valider
-    $("#endturnbtn").click(onClickValider);
-})
+    // Ajouter l'event click sur les boutons valider
+    $("#endturnbtn1").bind('click', {id: 1}, onClickValider);
+	$("#endturnbtn2").bind('click', {id: 2}, onClickValider);
+}
 
 /**
  * Indique la lettre que le joueur veut déplacer
@@ -47,12 +48,20 @@ function od(ev){
 function ode(ev){
     if ($(elemBelow).hasClass('boardCell')) // Si l'élément a la class 'boardCell'
         if ($(elemBelow).children().length == 0) // S'il n'y a pas déjà une lettre dans la case
-            if ($(elemBelow).parents("#board").length) // Si c'est une case du plateau, et non de la main
+            if ($(elemBelow).parents("#board").length){ // Si c'est une case du plateau, et non de la main
                 $(elemBelow).html(clickedLetter);
+				addLetter(clickedLetter.html(), elemBelow);
+			}
 }
 
-function onClickValider(){
-    $("#hand-content .boardCell").each(function() {
+/**
+ * Vérifie si le joueur peut terminer son tour ou non en ayant poser des lettres
+ * @param	{id} id L'id du joueur qui joue
+ */
+function onClickValider(id){
+	if (!checkCurrentWord())
+		return;
+    $("#hand-content" + id.data.id + " .boardCell").each(function(){
         if ((this).children.length > 0)
             return;
         $(this).html(getLetterDiv());
@@ -61,4 +70,5 @@ function onClickValider(){
         $(this).attr("ondragend", "ode(event)");
         $(this).attr("ondrag", "od(event)");
     });
+	nextPlayer(false);
 }

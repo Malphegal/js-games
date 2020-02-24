@@ -14,6 +14,23 @@ header {
 	margin-bottom: 0.8em;
 }
 
+#scoreboard {
+	display: flex;
+	justify-content: center;
+}
+
+.playerscore {
+    border: 1px solid black;
+	width: 15em;
+	height: 2.5em;
+	text-align: center;
+	margin: 0 2em;
+}
+
+.playerscore p {
+	margin: 0;
+}
+
 /* ---- Board ---- */
 
 #board {
@@ -74,7 +91,7 @@ header {
 
 /* ---- Hand ---- */
 
-#hand {
+.hand-container {
 	background-color: lightblue;
 	margin-top: 0.8em;
 	border-top: 2px #888 solid;
@@ -84,13 +101,13 @@ header {
 	padding: 5px 0%;
 }
 
-#hand-content {
+.hand-content {
 	height: 100%;
 	background-color: #598dd4;
 	display: flex;
 }
 
-#hand-content .boardCell {
+.hand-content .boardCell {
 	border: 1px black solid;
 }
 
@@ -112,4 +129,9 @@ header {
 	border: 2px solid #d30000;
 	box-shadow:inset 0px 0px 0px 2px #500;
 	cursor: initial;
+}
+
+.playername {
+	font-weight: 700;
+	font-size: 2em;
 }
