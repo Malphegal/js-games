@@ -1,9 +1,18 @@
+// ---- FIELDS ----
+
 let alph = "abcdefghijklmnopqrstuvwxyz_".split("");
 let letterPool = [];
 let letterValues = [];
 let allWords;
 let wordsOnBoard;
 
+let currentWord = "";
+
+// ---- METHODS ----
+
+/*
+ * Initialise le pool de lettres, avec la valeur des lettres
+ */
 function initWords(){
 	loadWords();
 	
@@ -27,6 +36,10 @@ function initWords(){
 	}
 }
 
+/**
+ * Permet d'avoir une lettre aléatoire
+ * @return {string} Une lettre aléatoire
+ */
 function getRandomLetter(){
     return letterPool[Math.floor(((Math.random() * 1000) % letterPool.length))];
 }
@@ -38,7 +51,6 @@ async function loadWords(){
 	allWords = allWords.split("\r\n");
 }
 
-let currentWord = "";
 function addLetter(letter, cell){
 	let idSplit = cell.id.split("-");
 	wordsOnBoard[idSplit[1]][idSplit[2]] = letter;

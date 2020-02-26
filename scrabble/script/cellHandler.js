@@ -16,6 +16,10 @@ let boardColors = ["R", "G", "G", "L", "G", "G", "G", "R", "G", "G", "G", "L", "
 
 let hoveredCell = undefined;
 
+/**
+ * Permet d'obtenir la class à ajouter à une div, pour en modifier sa couleur
+ * @return {string} Le nom de la class
+ */
 function computeCellColorClass(i, j){
 	switch (boardColors[i * 15 + j])
 	{
@@ -34,6 +38,11 @@ function computeCellColorClass(i, j){
 	}
 }
 
+/**
+ * Permet d'avoir une div d'une lettre aléatoire
+ * @return {string} Un string représentant une nouvelle div, ayant une lettre affiché à l'interieur
+ */
 function getLetterDiv(){
-	return "<div class=\"letter\" draggable=\"true\">" + getRandomLetter() + "</div>";
+	let newLetter = getRandomLetter();
+	return "<div class=\"letter\" draggable=\"true\">" + newLetter + "<span>" + letterValues[newLetter] + "</span></div>";
 }

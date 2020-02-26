@@ -34,15 +34,11 @@ header {
 /* ---- Board ---- */
 
 #board {
-	display: flex;
-	flex-direction: column;
+	display: inline-grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	align-items: center;
-	padding: 0.5em;
 	background-color: #d8b685;
-}
-
-#board > div {
-	display:flex;
+	padding: 0 20%;
 }
 
 .boardCell {
@@ -59,8 +55,10 @@ header {
 	box-shadow:inset 0px 0px 0px 1px #444;
 }
 
+/* ---- Board cells ---- */
+
 #board .greenCellColor {
-	background-color: #00bb00;
+	background-color: #44bb44;
 }
 
 #board .redCellColor {
@@ -72,7 +70,7 @@ header {
 }
 
 #board .blueCellColor {
-	background-color: #000088;
+	background-color: #2240bb;
 }
 
 #board .pinkCellColor {
@@ -89,7 +87,16 @@ header {
 	max-height: 100%;
 }
 
+.letter span {
+	font-size: 0.3em;
+}
+
 /* ---- Hand ---- */
+
+.playername {
+	font-weight: 700;
+	font-size: 2em;
+}
 
 .hand-container {
 	background-color: lightblue;
@@ -115,23 +122,15 @@ header {
 	cursor: pointer;
 }
 
-#endturnbtn {
+.hand-container button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	transition-duration: 0.4s;
 	cursor: pointer;
-	height: 2em;
-	box-shadow:inset 0px 0px 0px 2px #050;
-	background-color: green;
-    border: 2px solid #00d300;
-    font-weight: 800;
-}
-
-#endturnbtn[disabled] {
-	background-color: red;
-	border: 2px solid #d30000;
-	box-shadow:inset 0px 0px 0px 2px #500;
-	cursor: initial;
-}
-
-.playername {
-	font-weight: 700;
-	font-size: 2em;
 }
